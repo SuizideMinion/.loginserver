@@ -8,6 +8,7 @@ use App\Models\servers\rUsers;
 use App\Models\servers\Servers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ServerManagerController extends Controller
 {
@@ -62,5 +63,7 @@ class ServerManagerController extends Controller
             'token' => md5(time() * rand(1,1000000)), ////// TODO:: Token muss geprüft werden ob bereits besteht
             'token_created_at' => time()
         ]);
+
+        return Redirect::back()->withErrors(['msg' => 'The Message']);
     }
 }
