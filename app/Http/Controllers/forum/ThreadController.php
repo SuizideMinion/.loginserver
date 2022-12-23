@@ -41,14 +41,16 @@ class ThreadController extends Controller
                     ->paginate(30);
             }
             else {
+                $Boardids = [161,13,14,3,30,37,85,66,4,113,114,115,116,120,119,117,118,172,112,130,128];
                 $Threads = Threads::orderBy('lastposttime', 'DESC')
                     ->with('user', 'posts', 'board')
+                    ->whereNotIn('boardid', $Boardids)
                     ->paginate(30);
             }
         }
         else
         {
-            $Boardids = [161,3,30,37,85,66,4,113,114,115,116,120,119,117,118,172,112,130,128];
+            $Boardids = [161,13,14,3,30,37,85,66,4,113,114,115,116,120,119,117,118,172,112,130,128];
             $Boards = Boards::whereNotIn('boardid', $Boardids)->get();
             if ( isset($_GET['board']) ) {
                 $Threads = Threads::orderBy('lastposttime', 'DESC')
@@ -151,9 +153,9 @@ class ThreadController extends Controller
         }
         else
         {
-            $Boardids = [161,3,30,37,85,66,4,113,114,115,116,120,119,117,118,172,112,130,128];
+            $Boardids = [161,13,14,3,30,37,85,66,4,113,114,115,116,120,119,117,118,172,112,130,128];
             $Boards = Boards::whereNotIn('boardid', $Boardids)->get();
-
+            if ( in_array($id, $Boardids) ) redirect()->back();
             $Threads = Threads::orderBy('lastposttime', 'DESC')
                 ->where('boardid', $id)
                 ->where('visible', 1)

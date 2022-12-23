@@ -50,6 +50,7 @@ Route::group(['middleware' => ['log']], function () {
     Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
     // Paypal Donation Form
+    Route::get('gallery/{id}', 'GalleryController@index');
 
     Route::get('transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
     Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
