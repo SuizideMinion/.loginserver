@@ -42,8 +42,13 @@
                 <li><a class="nav-link {{ request()->is('accounts') ? 'active': ''}}" href="/accounts">Server</a></li>
                 <li><a class="nav-link {{ request()->is('discord') ? 'active': ''}}" href="https://discord.gg/gqegaKQmB7" target="_Blank">Discord</a></li>
                 <li><a class="nav-link {{ request()->is('transaction') ? 'active': ''}}" href="/transaction">Spenden</a></li>
-                <li><a class="nav-link {{ request()->is('wiki') ? 'active': ''}}" href="/wiki">Wiki</a></li>
-                <li><a class="nav-link {{ request()->is('forum') ? 'active': ''}}" href="/forum">Forum</a></li>
+                <li class="dropdown"><a href="#"><span>Community</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/forum">Forum</a></li>
+                        <li><a href="/wiki">Wiki (Comming Soon)</a></li>
+                        <li><a href="/wiki">Community Umfragen (Comming Soon)</a></li>
+                    </ul>
+                </li>
                 @guest
                     <li class="dropdown"><a href="#"><span>Login/Register</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
